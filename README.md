@@ -54,7 +54,19 @@ Within the URI format described above, there is some variation in the data which
 |         | ldengine://{owner}//@acct:twitter:{accountID}/{userID}/relationship/incoming/pending   | List of users that have requested to follow {userID} |
 |         | ldengine://{owner}//@acct:twitter:{accountID}/direct/sent      | Direct messages sent by {accountID} |
 |         | ldengine://{owner}//@acct:twitter:{accountID}/direct/received  | Direct messages received by {accountID} |
-
+| Facebook| ldengine://{owner}//@acct:facebook:{accountID}/user/{userID}        | User Profile for {userID} |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/contacts             | User's friends profile list |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fnews                | User's news feed |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fstatuses            | User's status feed |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fevents              | User's created events. |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fgroups              | User's group details |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/flikes               | User's likes |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/flinks               | Links shared by user |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fphotos              | User's photos |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fposts               | Posts shared by user |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/falbums              | albums shared by user |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fnotes               | User's notes |
+|         | ldengine://{owner}//@acct:facebook:{accountID}/fvideos              | Videos shared by user |
 
 Code Sample
 ==================

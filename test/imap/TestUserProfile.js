@@ -10,7 +10,7 @@ var datamodule = new EDM.DataModule({
 });
 
 describe('Testing Imap User Profile', function() {
-  
+
   before(function() {
     tokenStore.storeUserTokens(
       'curtis', 'acct:imap:curtislacy221@yahoo.com@imap.mail.yahoo.com',
@@ -27,6 +27,7 @@ describe('Testing Imap User Profile', function() {
     datamodule.fetcher.fetch(
       'ldengine://curtis//@acct:imap:curtislacy221@yahoo.com@imap.mail.yahoo.com/user/curtis.lacy',
        function(error, result) {
+         console.log("This is it");
          assert.equal(error, null);
        });
   });
