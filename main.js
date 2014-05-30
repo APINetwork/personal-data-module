@@ -82,7 +82,6 @@ function EngineDataModule( options ) {
 	{
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserProfileTranslator'));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterDirectMessageTranslator' ));
-		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterRelationshipTranslator' ));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterTweetTranslator' ));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserFollowersTranslator'));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserFollowsTranslator'));
@@ -90,7 +89,7 @@ function EngineDataModule( options ) {
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserPendingFollowesTranslator'));
 	}
 
-	if ( options.services != null && options.services[0] == 'facebook') {
+	if ( !options.services || options.services.indexOf( 'facebook' ) >= 0) {
 		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserProfileTranslator'));
 		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookContactListTranslator'));
 		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookNewsFeedTranslator'));
