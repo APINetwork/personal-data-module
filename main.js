@@ -15,6 +15,10 @@ function EngineDataModule( options ) {
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesSentProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesReceivedProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TweetProducer' ) );
+    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowersProducer' ) );
+    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowsProducer' ) );
+    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserPendingFollowersProducer' ) );
+    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserPendingFollowesProducer' ) );
 	}
 
   if ( options.services != null && options.services[0] == 'facebook') {
@@ -76,10 +80,14 @@ function EngineDataModule( options ) {
 
 	if( options.services && options.services.indexOf( 'twitter' ) >= 0 )
 	{
-		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserProfileTranslator' ));
+		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserProfileTranslator'));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterDirectMessageTranslator' ));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterRelationshipTranslator' ));
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterTweetTranslator' ));
+    this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserFollowersTranslator'));
+    this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserFollowsTranslator'));
+    this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserPendingFollowersTranslator'));
+    this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserPendingFollowesTranslator'));
 	}
 
   if ( options.services != null && options.services[0] == 'facebook') {
