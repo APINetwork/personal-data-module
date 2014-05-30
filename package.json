@@ -27,12 +27,7 @@
      "passport" : "0.2.0",
      "passport-facebook" : "1.0.2",
      "fb" : "0.6.2",
-<<<<<<< HEAD
-     "fbgraph" : "0.2.9"
-=======
      "fbgraph" : "0.2.9",
-     "mtwitter" : "1.5.3",
-     "engine-data-module": "git+https://github.com/LDEngine/Engine-Data-Module.git#master"
->>>>>>> 9971db97c834808769bac627d455eefa125c61ea
+     "mtwitter" : "1.5.3"
 	}
 }
