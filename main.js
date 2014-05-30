@@ -6,19 +6,19 @@ function EngineDataModule( options ) {
 	if( !options.services || options.services.indexOf( 'twitter' ) >= 0 )
 	{
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserProfileProducer' ) );
-		/*this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterTweetIndexProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterMentionsProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingRelationshipProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingPendingRelationshipProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingPendingRelationshipProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingRelationshipProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesSentProducer' ) );
-		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesReceivedProducer' ) );
+		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterTweetIndexProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterMentionsProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingRelationshipProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingPendingRelationshipProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingPendingRelationshipProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingRelationshipProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesSentProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesReceivedProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TweetProducer' ) );
 	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowersProducer' ) );
 	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowsProducer' ) );
 	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserPendingFollowersProducer' ) );
-	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserPendingFollowesProducer' ) );*/
+	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserPendingFollowesProducer' ) );
 	}
 
 	if ( !options.services || options.services.indexOf( 'facebook' ) >= 0) {
@@ -90,21 +90,21 @@ function EngineDataModule( options ) {
 		this.fetcher.registerTranslator( require( './lib/translators/twitter/TwitterUserPendingFollowesTranslator'));
 	}
 
-  if ( options.services != null && options.services[0] == 'facebook') {
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserProfileTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookContactListTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookNewsFeedTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookStatusesFeedTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserLikesTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserPhotosTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserGroupsTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserPostsTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserLinksTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserEventsTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserNotesTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserAlbumsTranslator'));
-    this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserVideosTranslator'));
-  }
+	if ( options.services != null && options.services[0] == 'facebook') {
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserProfileTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookContactListTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookNewsFeedTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookStatusesFeedTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserLikesTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserPhotosTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserGroupsTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserPostsTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserLinksTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserEventsTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserNotesTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserAlbumsTranslator'));
+		this.fetcher.registerTranslator(require('./lib/translators/facebook/FacebookUserVideosTranslator'));
+	}
 
 	if( !options.services || options.services.indexOf( 'app.net' ) >= 0 )
 	{
