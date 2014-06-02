@@ -12,8 +12,8 @@ function EngineDataModule( options ) {
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingPendingRelationshipProducer' ) );
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingPendingRelationshipProducer' ) );
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingRelationshipProducer' ) );
-		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesSentProducer' ) );
-		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesReceivedProducer' ) );
+		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesSentProducer' ) );
+		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterDirectMessagesReceivedProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TweetProducer' ) );
 	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowersProducer' ) );
 	    this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserFollowsProducer' ) );
