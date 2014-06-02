@@ -7,7 +7,7 @@ function EngineDataModule( options ) {
 	{
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterUserProfileProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterTweetIndexProducer' ) );
-		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterMentionsProducer' ) );
+		this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterMentionsProducer' ) );
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingRelationshipProducer' ) );
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterIncomingPendingRelationshipProducer' ) );
 		//this.fetcher.registerDocProducer( require( './lib/producers/twitter/TwitterOutgoingPendingRelationshipProducer' ) );
