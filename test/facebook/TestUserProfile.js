@@ -26,7 +26,7 @@ describe('Testing Facebook User Profile', function() {
             },
             function(){
               it('should return users facebook profile', function() {
-                datamodule.fetcher.fetch('ldengine://yuho.jeta//@acct:facebook:100007891360262/user/100007891360262',
+                datamodule.fetcher.fetch('apinetwork://yuho.jeta//@acct:facebook:100007891360262/user/100007891360262',
                     function(error, result) {
                       console.log("this is result "+result);
                       console.log("this is error "+ JSON.stringify(error));
@@ -39,7 +39,7 @@ describe('Testing Facebook User Profile', function() {
   });
 /*
   it('should return users facebook profile', function() {
-    datamodule.fetcher.fetch('ldengine://yuho.jeta//@acct:facebook:100007891360262/user/100007891360262',
+    datamodule.fetcher.fetch('apinetwork://yuho.jeta//@acct:facebook:100007891360262/user/100007891360262',
      function(error, result) {
        console.log("this is result "+result);
        console.log("this is error "+ JSON.stringify(error));

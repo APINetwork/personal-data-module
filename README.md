@@ -5,7 +5,7 @@ Access a variety of data sources in a simple, consistent way.
 
 Usage
 ==================
-Aside from authentication setup, there's essentially one call to recover data in the engine-data-module:
+Aside from authentication setup, there's essentially one call to recover data in the personal-data-module:
 
 ```js
 	datamodule.fetcher.fetch( uri, callback );
@@ -14,13 +14,13 @@ where callback takes two arguments, an error and a result document.
 
 How is this possible?  Every piece of data that can be recovered has a URI associated with it.  This URI contains the user identification information, as well as a reference to the data that we want to recover.  For example:
 ```
-	ldengine://curtis//@acct:twitter:90542269/status/mentions
+	apinetwork://curtis//@acct:twitter:90542269/status/mentions
 ```
 is the URI of a document which includes all of the a particular twitter account's mentions.  Also included in the URI is the user ID of the user in our local system, so that we can keep users' data separate from each other.  The URI format is according to the following:
 ```
 	{protocol}://{Local User ID}//@{Remote Data Source}/{Path describing the desired document}
 ```
-In the above example, {protocol} is "ldengine", indicating a standard engine-data-module data document URI.  {Local User ID} is "curtis", which is the user who created the example, and the key used to look up that user's access keys in the TokenStore.  {Remote Data Source} is "acct:twitter:90542269", which indicates an account from Twitter, belonging to user #90542269.  The path is "status/mentions", which is means we want user statuses which mention that user.
+In the above example, {protocol} is "apinetwork", indicating a standard personal-data-module data document URI.  {Local User ID} is "curtis", which is the user who created the example, and the key used to look up that user's access keys in the TokenStore.  {Remote Data Source} is "acct:twitter:90542269", which indicates an account from Twitter, belonging to user #90542269.  The path is "status/mentions", which is means we want user statuses which mention that user.
 
 Sample URIs
 ==================
@@ -28,45 +28,45 @@ Within the URI format described above, there is some variation in the data which
 
 | Source  | URI                                                         | Meaning                   |
 | ------- | ----------------------------------------------------------- | ------------------------- |
-| App.net | ldengine://{owner}//@acct:appdotnet:{accountID}/user/{userID}  | User Profile for {userID} |
-|         | ldengine://{owner}//@acct:appdotnet:{accountID}/user/following | List of users that {accountID} is following. |
-|         | ldengine://{owner}//@acct:appdotnet:{accountID}/user/followers | List of users who follow {accountID}. |
-|         | ldengine://{owner}//@acct:appdotnet:{accountID}/posts/mentions | List of posts mentioning {accountID}. |
-|         | ldengine://{owner}//@acct:appdotnet:{accountID}/posts/created  | List of posts created by {accountID}. |
-| Gmail   | ldengine://{owner}//@acct:gmail:{accountID}/user/{userID}      | User Profile for {userID} |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/mailbox/_index     | List of mailboxes in ownerID's account. |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/mailbox/{mailboxName} | List of messages in mailbox named {mailboxName}, by URI |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/message/x-gm-msgid/{messageID} | Email message by gmail message ID |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/message-id/{msgID} | Email message in given mailbox according to its "message-id" SMTP header |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/uid/{msgID} | Email message in given mailbox with server-assigned UID {msgID} |
-|         | ldengine://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/{seqNumber} | Email message in given mailbox according to its sequence number |
-| IMAP    | ldengine://{owner}//@acct:imap:{username}@{server}/user/{username} | User profile for {username} (This data is very limited) |
-|         | ldengine://{owner}//@acct:imap:{username}@{server}/mailbox/_index     | List of mailboxes in ownerID's account. |
-|         | ldengine://{owner}//@acct:imap:{username}@{server}/mailbox/{mailboxName} | List of messages in mailbox named {mailboxName}, by URI |
-|         | ldengine://{owner}//@acct:imap:{username}@{server}/message/{mailboxName}/uid/{msgID} | Email message in given mailbox with server-assigned UID {msgID} |
-|         | ldengine://{owner}//@acct:imap:{username}@{server}/message/{mailboxName}/{seqNumber} | Email message in given mailbox according to its sequence number |
-| Twitter | ldengine://{owner}//@acct:twitter:{accountID}/user/{userID}        | User Profile for {userID} |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/status/sent          | Status messages sent by {accountID} |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/{userID}/relationship/outgoing/confirmed | List of users that {userID} is following. |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/{userID}/relationship/outgoing/pending   | List of users that {userID} has requested to follow. |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/status/mentions      | Status messages that mention {accountID}. |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/{userID}/relationship/incoming/confirmed | List of users that follow {userID}. |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/{userID}/relationship/incoming/pending   | List of users that have requested to follow {userID} |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/direct/sent      | Direct messages sent by {accountID} |
-|         | ldengine://{owner}//@acct:twitter:{accountID}/direct/received  | Direct messages received by {accountID} |
-| Facebook| ldengine://{owner}//@acct:facebook:{accountID}/user/{userID}        | User Profile for {userID} |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/contacts             | User's friends profile list |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fnews                | User's news feed |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fstatuses            | User's status feed |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fevents              | User's created events. |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fgroups              | User's group details |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/flikes               | User's likes |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/flinks               | Links shared by user |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fphotos              | User's photos |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fposts               | Posts shared by user |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/falbums              | albums shared by user |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fnotes               | User's notes |
-|         | ldengine://{owner}//@acct:facebook:{accountID}/fvideos              | Videos shared by user |
+| App.net | apinetwork://{owner}//@acct:appdotnet:{accountID}/user/{userID}  | User Profile for {userID} |
+|         | apinetwork://{owner}//@acct:appdotnet:{accountID}/user/following | List of users that {accountID} is following. |
+|         | apinetwork://{owner}//@acct:appdotnet:{accountID}/user/followers | List of users who follow {accountID}. |
+|         | apinetwork://{owner}//@acct:appdotnet:{accountID}/posts/mentions | List of posts mentioning {accountID}. |
+|         | apinetwork://{owner}//@acct:appdotnet:{accountID}/posts/created  | List of posts created by {accountID}. |
+| Gmail   | apinetwork://{owner}//@acct:gmail:{accountID}/user/{userID}      | User Profile for {userID} |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/mailbox/_index     | List of mailboxes in ownerID's account. |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/mailbox/{mailboxName} | List of messages in mailbox named {mailboxName}, by URI |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/message/x-gm-msgid/{messageID} | Email message by gmail message ID |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/message-id/{msgID} | Email message in given mailbox according to its "message-id" SMTP header |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/uid/{msgID} | Email message in given mailbox with server-assigned UID {msgID} |
+|         | apinetwork://{owner}//@acct:gmail:{accountID}/message/{mailboxName}/{seqNumber} | Email message in given mailbox according to its sequence number |
+| IMAP    | apinetwork://{owner}//@acct:imap:{username}@{server}/user/{username} | User profile for {username} (This data is very limited) |
+|         | apinetwork://{owner}//@acct:imap:{username}@{server}/mailbox/_index     | List of mailboxes in ownerID's account. |
+|         | apinetwork://{owner}//@acct:imap:{username}@{server}/mailbox/{mailboxName} | List of messages in mailbox named {mailboxName}, by URI |
+|         | apinetwork://{owner}//@acct:imap:{username}@{server}/message/{mailboxName}/uid/{msgID} | Email message in given mailbox with server-assigned UID {msgID} |
+|         | apinetwork://{owner}//@acct:imap:{username}@{server}/message/{mailboxName}/{seqNumber} | Email message in given mailbox according to its sequence number |
+| Twitter | apinetwork://{owner}//@acct:twitter:{accountID}/user/{userID}        | User Profile for {userID} |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/status/sent          | Status messages sent by {accountID} |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/{userID}/relationship/outgoing/confirmed | List of users that {userID} is following. |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/{userID}/relationship/outgoing/pending   | List of users that {userID} has requested to follow. |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/status/mentions      | Status messages that mention {accountID}. |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/{userID}/relationship/incoming/confirmed | List of users that follow {userID}. |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/{userID}/relationship/incoming/pending   | List of users that have requested to follow {userID} |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/direct/sent      | Direct messages sent by {accountID} |
+|         | apinetwork://{owner}//@acct:twitter:{accountID}/direct/received  | Direct messages received by {accountID} |
+| Facebook| apinetwork://{owner}//@acct:facebook:{accountID}/user/{userID}        | User Profile for {userID} |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/contacts             | User's friends profile list |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fnews                | User's news feed |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fstatuses            | User's status feed |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fevents              | User's created events. |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fgroups              | User's group details |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/flikes               | User's likes |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/flinks               | Links shared by user |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fphotos              | User's photos |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fposts               | Posts shared by user |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/falbums              | albums shared by user |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fnotes               | User's notes |
+|         | apinetwork://{owner}//@acct:facebook:{accountID}/fvideos              | Videos shared by user |
 
 Code Sample
 ==================
@@ -76,8 +76,8 @@ Code Sample
 // It's a nice package.
 var async = require( 'async' );
 
-// Include the engine-data-module library.
-var EDM = require( 'engine-data-module' );
+// Include the personal-data-module library.
+var EDM = require( 'personal-data-module' );
 // In a real application, you'd probably want to store the tokens in a database,
 // but in this sample we'll use a simple in-memory datastore.
 var tokenStore = new EDM.DummyTokenStore();
@@ -108,7 +108,7 @@ tokenStore.storeApplicationTokens(
 		tokenStore.storeUserTokens( 
 			'curtis', 'acct:twitter:90542269',
 			{ 
-		// engine-data-module doesn't provide any of the authentication flow, you'll
+		// personal-data-module doesn't provide any of the authentication flow, you'll
 		// need to provde that.  https://github.com/jaredhanson/passport is an excellent
 		// choice when it comes to authenticating with remote services.
 			  token: 'YouGetThisTokenWhenAUserAuthenticatesWithTwitter',
@@ -124,7 +124,7 @@ tokenStore.storeApplicationTokens(
 						function( done ) {
 		        // For "curtis"'s twitter account, recover his user profile.
 							datamodule.fetcher.fetch( 
-								'ldengine://curtis//@acct:twitter:90542269/user/90542269',
+								'apinetwork://curtis//@acct:twitter:90542269/user/90542269',
 								function( error, result ) {
 									if( error )
 									{
@@ -144,7 +144,7 @@ tokenStore.storeApplicationTokens(
 						function( done ) {
 						// Now let's recover his most recent mentions.
 							datamodule.fetcher.fetch( 
-								'ldengine://curtis//@acct:twitter:90542269/status/mentions',
+								'apinetwork://curtis//@acct:twitter:90542269/status/mentions',
 								function( error, result ) {
 									if( error )
 									{
@@ -164,7 +164,7 @@ tokenStore.storeApplicationTokens(
 						function( done ) {
 						// Recovering a user profile also works for a user other than the account owner.
 							datamodule.fetcher.fetch( 
-								'ldengine://curtis//@acct:twitter:90542269/user/130852105',
+								'apinetwork://curtis//@acct:twitter:90542269/user/130852105',
 								function( error, result ) {
 									if( error )
 									{

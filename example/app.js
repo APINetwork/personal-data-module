@@ -6,8 +6,8 @@ var app = connect();
 
 app.use(connect.static('public'));
 app.listen(process.env.PORT || 5000);
-// Include the engine-data-module library.
-var EDM = require( 'engine-data-module' );
+// Include the personal-data-module library.
+var EDM = require( 'personal-data-module' );
 // In a real application, you'd probably want to store the tokens in a database,
 // but in this sample we'll use a simple in-memory datastore.
 var tokenStore = new EDM.DummyTokenStore();
@@ -43,7 +43,7 @@ tokenStore.storeApplicationTokens(
         tokenStore.storeUserTokens( 
             'tweetsgraffiti', 'acct:twitter:2210018156',
             { 
-        // engine-data-module doesn't provide any of the authentication flow, you'll
+        // personal-data-module doesn't provide any of the authentication flow, you'll
         // need to provde that.  https://github.com/jaredhanson/passport is an excellent
         // choice when it comes to authenticating with remote services.
               token: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
@@ -59,7 +59,7 @@ tokenStore.storeApplicationTokens(
                         /*function( done ) {
                 // For "tweetsgraffiti"'s twitter account, recover his user profile.
                             datamodule.fetcher.fetch( 
-                                'ldengine://tweetsgraffiti//@acct:twitter:2210018156/user/2210018156',
+                                'apinetwork://tweetsgraffiti//@acct:twitter:2210018156/user/2210018156',
                                 function( error, result ) {
                                     if( error )
                                     {
@@ -81,7 +81,7 @@ tokenStore.storeApplicationTokens(
                             setInterval(function() {
 
 						 			  datamodule.fetcher.fetch( 
-                                'ldengine://tweetsgraffiti//@acct:twitter:2210018156/status/mentions',
+                                'apinetwork://tweetsgraffiti//@acct:twitter:2210018156/status/mentions',
                                 function( error, result ) {
                                     if( error )
                                     {
@@ -103,7 +103,7 @@ tokenStore.storeApplicationTokens(
                         function( done ) {
                         // Recovering a user profile also works for a user other than the account owner.
                             datamodule.fetcher.fetch( 
-                                'ldengine://tweetsgraffiti//@acct:twitter:2210018156/user/90542269',
+                                'apinetwork://tweetsgraffiti//@acct:twitter:2210018156/user/90542269',
                                 function( error, result ) {
                                     if( error )
                                     {

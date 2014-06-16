@@ -25,7 +25,7 @@ describe('Testing Imap User Profile', function() {
 
   it('should return users imap profile', function() {
     datamodule.fetcher.fetch(
-      'ldengine://curtis//@acct:imap:curtislacy221@yahoo.com@imap.mail.yahoo.com/user/curtis.lacy',
+      'apinetwork://curtis//@acct:imap:curtislacy221@yahoo.com@imap.mail.yahoo.com/user/curtis.lacy',
        function(error, result) {
          console.log("This is it");
          assert.equal(error, null);
