@@ -1,10 +1,18 @@
 {
-	"name": "engine-data-module",
+	"name": "personal-data-module",
 	"version": "0.0.2",
 	"engines": {
 		"node": "0.10.x",
-		"npm": "1.1.x"
+		"npm": ">1.1.x"
 	},
+    "description": "Access a variety of data sources in a simple, consistent way.",
+    "keywords": [ "facebook", "twitter", "email", "imap" ],
+    "license": "MIT",
+    "repository" : { 
+        "type" : "git",
+        "url" : "https://github.com/APINetwork/personal-data-module.git"
+    },
+    "homepage": "https://github.com/APINetwork/personal-data-module",
   "scripts": {
     "test": "mocha --recursive test"
   },

@@ -1,4 +1,4 @@
-Engine-Data-Module
+Personal Data Model
 ==================
 
 Access a variety of data sources in a simple, consistent way.
