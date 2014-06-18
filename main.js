@@ -72,7 +72,7 @@ function EngineDataModule( options ) {
 
 	if( !options.services || options.services.indexOf( 'gmail' ) >= 0 )
 	{
-		this.fetcher.registerDocProducer( require( './lib/producers/gmail/GMailUserProfileProducer' ) );
+		//this.fetcher.registerDocProducer( require( './lib/producers/gmail/GMailUserProfileProducer' ) );
 		this.fetcher.registerDocProducer( require( './lib/producers/gmail/GMailMessageProducer' ) );
 	}
 
@@ -138,7 +138,7 @@ function EngineDataModule( options ) {
 
 	if( !options.services || options.services.indexOf( 'gmail' ) >= 0 )
 	{
-		this.fetcher.registerTranslator( require( './lib/translators/gmail/GMailUserProfileTranslator' ));
+		//this.fetcher.registerTranslator( require( './lib/translators/gmail/GMailUserProfileTranslator' ));
 	}
 }
 
