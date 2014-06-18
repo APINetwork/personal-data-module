@@ -1,4 +1,4 @@
-Personal Data Model
+Personal Data Module
 ==================
 
 Access a variety of data sources in a simple, consistent way.
